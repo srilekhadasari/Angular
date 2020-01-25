@@ -6,21 +6,45 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<body><pre>
- <h2> Enter firstNumber:</h2>
-  <input type="number" placeholder="enter first number" [(ngModel)]="firstNumber">
-  <br>
-  <h2>Enter secondNumber:</h2>
-  <input type="number" placeholder="enter second number" [(ngModel)]="secondNumber">
-  <br>
-  <h2>Result:</h2>
-  <input type="number" [(ngModel)]="result">
+<body>
+  <h2>{{message}}</h2>
+  <h3>Angular{{version}}Topics</h3>
+  <div>
+    Enter a Topic:
+    <input type="text" placeholder="topic name" #currentTopic/>
+    <button type="button" (click)="deleteTopicName(currentTopic.value)">Delete Topic</button>
+    <button type="button" (click)="addTopic(currentTopic.value)">Add Topic</button>
+    <button type="button" (click)="searchTopic(currentTopic.value)">searchTopic</button>
+  </div>
+  <br><br>
+  <table>
+    <thead>
+      <tr>
+        <td>Topic id</td>
+        <td>Topic Name</td>
+        <td>Action</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i=index; let topic of topics">
+        <td>
+          {{i+1}}
+        </td>
+        <td>
+          {{topic}}
+        </td>
+        <td>
+          <button type="button" (click)="deleteTopic(i)">Delete</button>
+        </td>
+        </tr>
+      </tbody>
+        <tfoot>
+        <tr>
+          <td colspan=3 >no.of topics:{{topics.length}} </td>
+        </tr>
+        </tfoot>
+    
+  </table>
   
-</pre>
-  <button (click)="add()">+</button>
-  <button (click)="sub()">-</button>
-  <button (click)="mul()">*</button>
-  <button (click)="div()">/</button>
-
 </body>
 </html>
